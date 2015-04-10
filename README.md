@@ -1,11 +1,12 @@
-# topface.marathon_chronos_task
+# topface.chronos_task
 
-Deploy [Chronos](https://airbnb.github.io/chronos/) tasks on chronos
-that is running on marathon. Marathon ensures that Chronos is always up
-and Chronos ensures that your cron jobs are working.
+Deploy [Chronos](https://airbnb.github.io/chronos/) tasks from ansible.
 
 Use [topface.marathon_app](https://github.com/Topface/ansible-marathon_app)
-to deploy Chronos on marathon.
+to deploy Chronos on Marathon
+and [marathoner](https://github.com/bobrik/marathoner) to make Chronos
+available on well-known host and port. Feel free to use any other path
+to set `chronos_url`.
 
 ## Usage
 
@@ -13,18 +14,17 @@ This role deploys tasks on Chronos via REST API.
 
 ### Role configuration
 
-* `marathon_url` url of Marathon, example: `http://marathon.dev:8080`
-* `chronos_app_name` used app name for Chronos, example: `/chronos`
+* `chronos_url` url of Chronos, example: `http://chronos.dev:8000`
 * `chronos_tasks` list of chronos tasks to add
 
 ### Example
 
 ```yaml
-- hosts: marathon-api-server
+- hosts: chronos-api-server
   gather_facts: no
   roles:
-    - role: topface.marathon_chronos_task
-      marathon_url: http://marathon.dev:8080
+    - role: topface.chronos_task
+      chronos_url: http://chronos.dev:8000
       chronos_tasks:
         - type: iso8601
             app:
