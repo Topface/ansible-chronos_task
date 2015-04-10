@@ -1,0 +1,12 @@
+---
+- name: get chronos url
+  uri: url="{{ marathon_url }}/v2/apps/{{ chronos_app_name }}" method=GET return_content=yes
+  register: marathon_apps
+- name: create chronos tasks
+  uri: >
+    url="http://{{ marathon_apps.json.app.tasks[0].host }}:{{ marathon_apps.json.app.tasks[0].ports[0] }}/scheduler/{{ item.type }}"
+    method=POST
+    HEADER_Content-Type="application/json"
+    body='{{ item.app | to_json }}'
+    status_code=204
+  with_items: chronos_tasks
