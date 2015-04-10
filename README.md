@@ -1,4 +1,4 @@
-# topface.chronos_on_marathon
+# topface.marathon_chronos_task
 
 Deploy [Chronos](https://airbnb.github.io/chronos/) tasks on chronos
 that is running on marathon. Marathon ensures that Chronos is always up
@@ -23,7 +23,7 @@ This role deploys tasks on Chronos via REST API.
 - hosts: marathon-api-server
   gather_facts: no
   roles:
-    - role: topface.chronos_on_marathon
+    - role: topface.marathon_chronos_task
       marathon_url: http://marathon.dev:8080
       chronos_tasks:
         - type: iso8601
