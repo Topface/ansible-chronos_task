@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Ian Babrou
-  description: Deploy tasks on Chronos that is running on Marathon
+  description: Deploy tasks on Chronos
   license: MIT
   min_ansible_version: 1.7
   categories:
