@@ -52,4 +52,4 @@ task `snapshot_something`. See Chronos docs to learn more.
 
 ## License
 
-MIT
+[MIT](LICENSE)
